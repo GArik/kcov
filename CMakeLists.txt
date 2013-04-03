@@ -21,6 +21,10 @@ endif(NOT CMAKE_BUILD_TYPE)
 set (CMAKE_MODULE_PATH  ${CMAKE_MODULE_PATH}
                         ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 find_package (PkgConfig REQUIRED)
+find_package (bash-completion)
+if (NOT BASH_COMPLETION_FOUND)
+    message (WARNING "Failed to find bash-completion.")
+endif (NOT BASH_COMPLETION_FOUND)
 
 
 # ====================================
@@ -41,3 +45,6 @@ set (INSTALL_MAN_PATH  DESTINATION ${MAN_DIR})
 # ====================================
 add_subdirectory (src)
 add_subdirectory (doc)
+if (BASH_COMPLETION_FOUND)
+  add_subdirectory (completion)
+endif (BASH_COMPLETION_FOUND)

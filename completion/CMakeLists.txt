@@ -1,0 +1,3 @@
+install (FILES kcov.bash
+         DESTINATION ${BASH_COMPLETION_COMPLETIONSDIR}
+         RENAME ${PROJECT_NAME})
